@@ -1,17 +1,10 @@
-<div id="<%= dom_id transaction %>">
-  <p>
-    <strong>Title:</strong>
-    <%= transaction.title %>
-  </p>
+<div id="<%= dom_id transaction %>" class='d-flex justify-content-between p-2 bg-light mb-2 rpunded-3'>
 
-  <p>
-    <strong>Kind:</strong>
-    <%= transaction.kind %>
-  </p>
+  <%= transaction.title %>
 
-  <p>
-    <strong>Amount:</strong>
-    <%= transaction.amount %>
-  </p>
+  <span class='<%=  transaction.expense? ? 'text-danger' : 'text-success'%>'>
+    <%= number_to_euros(transaction.amount)%>
+
+  </span>
 
 </div>

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <%= link_to 'Home', root_path, class: "nav-link #{active_For(path:root_path) }"%>
         </li>
         <%if user_signed_in?%>
           <li class="nav-item">
@@ -15,29 +15,23 @@
           </li>
         <%else%>
           <li class="nav-item">
-            <%= link_to 'Rigister', new_user_registration_path, class: "nav-link"%>
+            <%= link_to 'Rigister', new_user_registration_path, class: "nav-link #active_For(path:new_user_registration_path) }"%>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log in', new_user_session_path, class: "nav-link"%>
+            <%= link_to 'Log in', new_user_session_path, class: "nav-link #{active_For(path:new_user_session_path) }"%>
           </li>
         <%end%>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle <%= 'disabled' if !user_signed_in?%>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Loged in section
+          <a class="nav-link dropdown-toggle <%= disable_links_if_not_signed%> <%= active_For(controller:'transactions')%>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Transactions
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/secret">Secret</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="/transactions">Show Transactions</a></li>
+            <li><a class="dropdown-item" href="/transactions/new"> New Log</a></li>
           </ul>
         </li>
 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
